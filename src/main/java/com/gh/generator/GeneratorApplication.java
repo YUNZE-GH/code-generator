@@ -13,10 +13,13 @@ import java.util.Scanner;
 
 public class GeneratorApplication {
 
-	private static String DBURL = "jdbc:mysql://localhost:3306/blog?useUnicode=true&serverTimezone=GMT&useSSL=false&characterEncoding=utf8";
-	private static String DBDRIVER = "com.mysql.cj.jdbc.Driver";
-	private static String DBUSERNAME = "root";
-	private static String DBPASSWORD = "root";
+	private final static String DBURL = "jdbc:mysql://localhost:3306/blog?useUnicode=true&serverTimezone=GMT&useSSL=false&characterEncoding=utf8";
+	private final static String DBDRIVER = "com.mysql.cj.jdbc.Driver";
+	private final static String DBUSERNAME = "root";
+	private final static String DBPASSWORD = "root";
+	// 项目的绝对路径 例：D:\work\gh-blog\common\src\main\java
+	private final static String URL = "D:\\work\\blog-cloud\\provider\\src\\main\\java";
+	private final static String parentPackageName = "com.gh.provider";
 
 	/**
 	 * <p>
@@ -43,7 +46,7 @@ public class GeneratorApplication {
 		GlobalConfig gc = new GlobalConfig();
 		String projectPath = System.getProperty("user.dir");
 		// 项目的绝对路径 例：D:\work\gh-blog\common\src\main\java
-		gc.setOutputDir("D:\\work\\gh-blog\\common\\src\\main\\java");
+		gc.setOutputDir(URL);
 		gc.setAuthor("gaohan");   // 作者
 		gc.setOpen(false);      //生成代码后是否打开文件夹
 		gc.setServiceName("%sService");  // 设置Service接口生成名称,这样生成接口前面就不会有 I
@@ -59,7 +62,7 @@ public class GeneratorApplication {
 		// 包配置
 		PackageConfig pc = new PackageConfig();
 		pc.setModuleName(scanner("模块名称")); // 模块名称, 这里可以根据不同模块来写
-		pc.setParent("com.gh.common"); // 父包名
+		pc.setParent(parentPackageName); // 父包名
 		mpg.setPackageInfo(pc);
 
 		// 策略配置
